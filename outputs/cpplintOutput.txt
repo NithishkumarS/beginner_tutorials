@@ -1,0 +1,8 @@
+cpplint output:
+
+nithish@nithish-HP-Pavilion-15-Notebook-PC:~/catkin_ws/src/beginner_tutorials/src$ cpplint talker.cpp 
+Done processing talker.cpp
+
+nithish@nithish-HP-Pavilion-15-Notebook-PC:~/catkin_ws/src/beginner_tutorials/src$ cpplint listener.cpp 
+Done processing listener.cpp
+
