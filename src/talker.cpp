@@ -29,7 +29,7 @@
  * @author Nithish Sanjeev Kumar
  * @copyright 2018 , Nithish Sanjeev Kumar All rights reserved
 
-*/
+ */
 
 #include <sstream>
 #include "ros/ros.h"
