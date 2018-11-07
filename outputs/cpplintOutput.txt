@@ -1,8 +1,13 @@
-cpplint output:
+## cpplint talker.cpp 
 
-nithish@nithish-HP-Pavilion-15-Notebook-PC:~/catkin_ws/src/beginner_tutorials/src$ cpplint talker.cpp 
+talker.cpp:39:  Static/global string variables are not permitted.  [runtime/string] [4]
+talker.cpp:47:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeString::Request &req  [runtime/references] [2]
+talker.cpp:48:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::changeString::Response &resp  [runtime/references] [2]
 Done processing talker.cpp
+Total errors found: 3
 
-nithish@nithish-HP-Pavilion-15-Notebook-PC:~/catkin_ws/src/beginner_tutorials/src$ cpplint listener.cpp 
+## cpplint listener.cpp 
+
 Done processing listener.cpp
+
 

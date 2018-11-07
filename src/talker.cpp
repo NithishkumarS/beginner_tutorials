@@ -44,8 +44,8 @@ std::string temp = "Initialize";
  *  @param string pointer for Response
  *  @return bool
  */
-bool baseString(beginner_tutorials::changeString::Request &req , beginner_tutorials::changeString::Response &resp) {
-
+bool baseString(beginner_tutorials::changeString::Request &req ,
+                beginner_tutorials::changeString::Response &resp) {
   temp = req.newString;
   resp.modifiedString = "String has been changed to" + temp;
   ROS_WARN_STREAM("Modified the base string");
@@ -96,15 +96,15 @@ int main(int argc, char **argv) {
    */
   auto chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
   int chatterFrequency = 10;
-  if(argc == 2) {
-     chatterFrequency = atoi(argv[1]); }
+  if (argc == 2) {
+     chatterFrequency = atoi(argv[1]);}
   ROS_INFO("Frequency input [%d]", chatterFrequency);
 
   ROS_DEBUG_STREAM("User Input Frequency is: " << chatterFrequency);
   if (chatterFrequency < 0) {
     ROS_ERROR_STREAM("Frequency cannot be negative");
     ROS_WARN_STREAM("Resetting frequency to 10");
-    chatterFrequency = 10; } else if (chatterFrequency == 0 ) {
+    chatterFrequency = 10; } else if (chatterFrequency == 0) {
                           ROS_FATAL_STREAM("Frequency cannot be 0");
                           ROS_WARN_STREAM("Resetting frequency to 10");
                           chatterFrequency = 10;
@@ -127,7 +127,6 @@ int main(int argc, char **argv) {
     ss << temp << count;
     msg.data = ss.str();
 
-    //ROS_DEBUG("%s", msg.data.c_str());
     ROS_INFO("%s", msg.data.c_str());
 
     /**
@@ -143,5 +142,6 @@ int main(int argc, char **argv) {
     loop_rate.sleep();
     ++count;
   }
+  temp = "Reset";
   return 0;
 }
