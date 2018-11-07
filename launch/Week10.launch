@@ -1,0 +1,22 @@
+<launch>
+  <env
+    name="ROSCONSOLE_CONFIG_FILE"
+    value="$(find beginner_tutorials)/config/config.conf"
+  />
+  <arg name="use_param" default= "10" />
+  <node
+     name = "talker"
+     pkg = "beginner_tutorials"
+     type = "talker"
+     output = "screen"
+     args = "$(arg use_param)"
+  />
+
+  <node
+     name = "listener"
+     pkg = "beginner_tutorials"
+     type = "listener"
+     launch-prefix = "xterm -e"
+  />
+</launch>     
+	
