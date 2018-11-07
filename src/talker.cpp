@@ -38,7 +38,7 @@
 
 std::string temp = "Initialize";
 
-bool baseString(beginner_tutorials::changeString::Request& req , beginner_tutorials::changeString::Response& resp) {
+bool baseString(beginner_tutorials::changeString::Request &req , beginner_tutorials::changeString::Response &resp) {
 
   temp = req.newString;
   resp.modifiedString = "String has been changed to" + temp;
@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
-  ros::ServiceServer server = n.advertiseService("changeString", &baseString);
+  auto server = n.advertiseService("changeString", &baseString);
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
