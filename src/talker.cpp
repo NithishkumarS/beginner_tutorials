@@ -38,6 +38,12 @@
 
 std::string temp = "Initialize";
 
+
+/** @brief Function for the callback function
+ *  @param string pointer for Request
+ *  @param string pointer for Response
+ *  @return bool
+ */
 bool baseString(beginner_tutorials::changeString::Request &req , beginner_tutorials::changeString::Response &resp) {
 
   temp = req.newString;
@@ -65,6 +71,11 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
+  /**
+     * Creation of a service server
+     * The service available will fully initialize this parameters and the name
+     * Object destructed will close down the service.
+     */
   auto server = n.advertiseService("changeString", &baseString);
   /**
    * The advertise() function is how you tell ROS that you want to
@@ -116,6 +127,7 @@ int main(int argc, char **argv) {
     ss << temp << count;
     msg.data = ss.str();
 
+    //ROS_DEBUG("%s", msg.data.c_str());
     ROS_INFO("%s", msg.data.c_str());
 
     /**
