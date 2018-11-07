@@ -68,7 +68,7 @@ an example would be
 rosservice call /changeString Nithish
 ```
 
-## Changing the chatter frequency via command line
+## Changing the chatter frequency via command line using launch file
 
 To modify the loop frequency open run the demo using launch file using the following command
 ```
