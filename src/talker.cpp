@@ -84,8 +84,19 @@ int main(int argc, char **argv) {
    * buffer up before throwing some away.
    */
   auto chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+  int frequency = 10;
 
-  ros::Rate loop_rate(10);
+
+  ros::Rate loop_rate(frequency);
+  ROS_DEBUG_STREAM("User Input Frequency is: " << frequency);
+  if (frequency < 0) {
+    ROS_ERROR_STREAM("Frequency cannot be negative");
+    ROS_WARN_STREAM("Resetting frequency to 10");
+    frequency = 10; } else if (frequency == 0 ) {
+                          ROS_FATAL_STREAM("Frequency cannot be 0");
+                          ROS_WARN_STREAM("Resetting frequency to 10");
+                          frequency = 10;
+    }
 
   /**
    * A count of how many messages we have sent. This is used to create
