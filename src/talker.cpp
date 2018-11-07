@@ -34,7 +34,17 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/changeString.h"
 
+std::string temp = "Initialize";
+
+bool baseString(beginner_tutorials::changeString::Request& req , beginner_tutorials::changeString::Response& resp) {
+
+  temp = req.newString;
+  resp.modifiedString = "String has been changed to" + temp;
+  ROS_WARN_STREAM("Modified the base string");
+  return true;
+}
 int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
@@ -55,6 +65,7 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
+  ros::ServiceServer server = n.advertiseService("changeString", &baseString);
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -88,7 +99,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "This is Nithish@116316958 " << count;
+    ss << temp << count;
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
