@@ -50,4 +50,39 @@ rosrun beginner_tutorials listener
 ```
 To stop the program press ctrl+C in each of the three terminals.
 
+## Using service to modify the base string
+
+To modify the default text run the demo either using the launch file as mentioned above (or you can run the demo without the launch file as explained above)
+
+After the demo starts open a new terminal and type
+
+```
+cd catkin_ws
+source devel/setup.bash
+rosservice call /modifyText <your string>
+```
+You will notice that the default text changes to the text you have entered.
+
+an example would be
+```
+rosservice call /changeString Nithish
+```
+
+## Changing the chatter frequency via command line
+
+To modify the loop frequency open run the demo using launch file using the following command
+```
+roslaunch beginner_tutorials Week10.launch use_param:=<int value greater than 0>
+```
+an example would be
+
+roslaunch beginner_tutorials hw10.launch frequency:=15
+
+## Modifying the severity type
+
+After starting the demo run this is a seperate terminal
+```
+rosservice call /talker/set_logger_level ros.beginner_tutorials <logger_level>
+```
+
 
