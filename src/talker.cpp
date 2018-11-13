@@ -33,6 +33,7 @@
 
 #include <sstream>
 #include "ros/ros.h"
+#include <tf/transform_broadcaster.h>
 #include "std_msgs/String.h"
 #include "beginner_tutorials/changeString.h"
 
@@ -70,6 +71,15 @@ int main(int argc, char **argv) {
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle n;
+
+
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  transform.setOrigin(tf::Vector3(2.0,3.0,5.0));
+  tf::Quaternion q;
+  q.setRPY(0, 0, 1.57);
+  transform.setRotation(q);
+
 
   /**
      * Creation of a service server
@@ -136,6 +146,7 @@ int main(int argc, char **argv) {
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
@@ -143,5 +154,9 @@ int main(int argc, char **argv) {
     ++count;
   }
   temp = "Reset";
+
+
+
+
   return 0;
 }
