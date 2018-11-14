@@ -46,7 +46,8 @@
 
 TEST(testTalker, checkServiceAvailability) {
 ros::NodeHandle nh;
-auto client = nh.serviceClient<beginner_tutorials::changeString>("changeString");
+auto client = nh.serviceClient<beginner_tutorials::changeString>
+                      ("changeString");
 EXPECT_TRUE(client.exists());
 }
 
@@ -56,13 +57,13 @@ EXPECT_TRUE(client.exists());
  *  @return none
  */
 TEST(testTalker, checkStringModification) {
-
 ros::NodeHandle nh;
-auto client = nh.serviceClient<beginner_tutorials::changeString>("changeString");
+auto client = nh.serviceClient<beginner_tutorials::changeString>
+                        ("changeString");
 beginner_tutorials::changeString::Request req;
 beginner_tutorials::changeString::Response resp;
 req.newString = "Nithish116316958";
-client.call(req,resp);
-EXPECT_STREQ("String has been changed toNithish116316958",resp.modifiedString.c_str());
-
+client.call(req, resp);
+EXPECT_STREQ("String has been changed toNithish116316958",
+             resp.modifiedString.c_str());
 }

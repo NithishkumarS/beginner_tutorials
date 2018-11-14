@@ -31,13 +31,13 @@
 
  */
 
+#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include "ros/ros.h"
-#include <tf/transform_broadcaster.h>
 #include "std_msgs/String.h"
 #include "beginner_tutorials/changeString.h"
 
-std::string temp = "Initialize";
+extern std::string temp = "Initialize";
 
 
 /** @brief Function for the callback function
@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
    */
   static tf::TransformBroadcaster br;
   tf::Transform transform;
-  transform.setOrigin(tf::Vector3(2.0,3.0,5.0));
+  transform.setOrigin(tf::Vector3(2.0, 3.0, 5.0));
   tf::Quaternion q;
   q.setRPY(0, 0, 1.57);
   transform.setRotation(q);
@@ -152,7 +152,8 @@ int main(int argc, char **argv) {
     /**
      * sendTransform() function publishes the tf frames to the topic
      */
-    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+    br.sendTransform(tf::StampedTransform(transform,
+                                          ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
