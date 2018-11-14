@@ -35,6 +35,9 @@ add_service_files(
    std_msgs
  )
 
+
+
+
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES beginner_tutorials
@@ -58,5 +61,25 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+
+  add_rostest_gtest(
+  testTalker
+  test/testTalker.launch
+  test/testTalker.cpp
+  test/main.cpp
+  )
+  target_link_libraries(
+  testTalker
+  ${catkin_LIBRARIES}
+  )
+  add_dependencies(
+  talker
+  testTalker
+  ${PROJECT_NAME}_generate_messages_cpp
+  ${catkin_EXPORTED_TARGETS}
+  )
+endif()
+
