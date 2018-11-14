@@ -157,7 +157,7 @@ To create a new bag file type
 ```
 cd ~/catkin_ws
 source devel/setup.bash
-roslaunch beginner_tutorials hw10.launch rosbagEnable:=true
+roslaunch beginner_tutorials Week10.launch rosbagEnable:=true
 ```
 press ctrl+C in each terminal window to exit from the program and stop the recording.
 
@@ -170,7 +170,7 @@ Rosbag file in .bag format is present in the outputs folder. To verify the liste
 ```
 cd ~/catkin_ws
 source devel/setup.bash
-cd src/beginner_tutorials/results
+cd src/beginner_tutorials/outputs
 rosbag play filename.bag
 ```
 Then to start the listener in a new terminal
