@@ -85,7 +85,7 @@ roslaunch beginner_tutorials Week10.launch use_param:=<int value greater than 0>
 ```
 an example would be
 
-roslaunch beginner_tutorials hw10.launch frequency:=15
+roslaunch beginner_tutorials Week10.launch frequency:=15
 
 ## Modifying the severity type
 
