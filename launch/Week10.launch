@@ -25,6 +25,6 @@
      type="record"
      args="-a -O recordBagFiles.bag"
      if="$(arg cover)"
-/>
+   />
 </launch>     
 	

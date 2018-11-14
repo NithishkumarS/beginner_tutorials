@@ -72,7 +72,9 @@ int main(int argc, char **argv) {
    */
   ros::NodeHandle n;
 
-
+  /**
+   * Creating the tf object for further processing
+   */
   static tf::TransformBroadcaster br;
   tf::Transform transform;
   transform.setOrigin(tf::Vector3(2.0,3.0,5.0));
@@ -146,6 +148,10 @@ int main(int argc, char **argv) {
      * in the constructor above.
      */
     chatter_pub.publish(msg);
+
+    /**
+     * sendTransform() function publishes the tf frames to the topic
+     */
     br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
@@ -154,9 +160,6 @@ int main(int argc, char **argv) {
     ++count;
   }
   temp = "Reset";
-
-
-
 
   return 0;
 }

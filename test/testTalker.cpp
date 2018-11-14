@@ -39,7 +39,10 @@
 #include "std_msgs/String.h"
 
 
-
+/** @brief Test for checking the availability of service
+ *  @param none
+ *  @return none
+ */
 
 TEST(testTalker, checkServiceAvailability) {
 ros::NodeHandle nh;
@@ -47,7 +50,13 @@ auto client = nh.serviceClient<beginner_tutorials::changeString>("changeString")
 EXPECT_TRUE(client.exists());
 }
 
+
+/** @brief Test for checking the working of the changeString service
+ *  @param none
+ *  @return none
+ */
 TEST(testTalker, checkStringModification) {
+
 ros::NodeHandle nh;
 auto client = nh.serviceClient<beginner_tutorials::changeString>("changeString");
 beginner_tutorials::changeString::Request req;
@@ -56,10 +65,4 @@ req.newString = "Nithish116316958";
 client.call(req,resp);
 EXPECT_STREQ("String has been changed toNithish116316958",resp.modifiedString.c_str());
 
-
 }
-
-
-
- 	
-
