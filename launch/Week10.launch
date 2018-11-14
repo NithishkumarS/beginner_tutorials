@@ -4,6 +4,7 @@
     value="$(find beginner_tutorials)/config/config.conf"
   />
   <arg name="use_param" default= "10" />
+  <arg name="cover" default= "false"/>
   <node
      name = "talker"
      pkg = "beginner_tutorials"
@@ -18,5 +19,12 @@
      type = "listener"
      launch-prefix = "xterm -e"
   />
+  <node
+     pkg="rosbag"
+     name="record"
+     type="record"
+     args="-a -O recordBagFiles.bag"
+     if="$(arg cover)"
+/>
 </launch>     
 	
